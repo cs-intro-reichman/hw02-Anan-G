@@ -5,17 +5,17 @@ public class Divisors {
 	public static void main (String[] args) {
 		
 		int num = Integer.parseInt(args[0]);
-		int x = 1;
+		int div = 1;
 		
-		while (x < num) { 
+		while (div < num) { 
 			
-			if (num % x == 0) {
+			if (num % div == 0) {
 
-				System.out.println(x);
+				System.out.println(div);
 
 			}
 
-			x++;
+			div++;
 			
 		}
 		
