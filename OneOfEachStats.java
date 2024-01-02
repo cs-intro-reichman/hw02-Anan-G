@@ -9,22 +9,12 @@ import java.util.Random;
  */
 public class OneOfEachStats {
 	public static void main (String[] args) {
-		// Gets the two command-line arguments
+
 		int T = Integer.parseInt(args[0]);
 		int seed = Integer.parseInt(args[1]);
-		// Initailizes a random numbers generator with the given seed value
-        Random generator = new Random(seed);  
-		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
 
+        	Random generator = new Random(seed);  
+		
 		String gender = "";
 		int index = 1;
 		int num2Ch = 0;
@@ -38,59 +28,57 @@ public class OneOfEachStats {
 			
 			sum2 = 0;
 
-				while(true) {			
+			while(true) {			
 			
-					if (generator.nextDouble() < 0.5) {
-			
-						gender += "g ";
-
-							} else {
-			
-								gender += "b ";
-			
-							}
-			
-					sum2++;
-					sum++;
-		
-					if (index >= 3){
-
-						if (gender.charAt(index - 1) != gender.charAt(index - 3)) {
+				sum++;
+				sum2++;
 				
-							if (sum2 == 2) {
+				
+				if (generator.nextDouble() < 0.5) {
+			
+					gender += "g ";
 
-								num2Ch++;
-								break;
-
-								}  
-					
-							if (sum2 == 3) {
-
-								num3Ch++;
-								break;
-
-								} 
-
-							if (sum2 >= 4) {
-						
-								num4Ch++;
-								break;
-						
-								}
-						
-					
-							}
-	
+						} else {
+			
+							gender += "b ";
+			
 						}
 			
-					index += 2;
+				
+		
+				if (index >= 3){
 
+					if ((gender.charAt(index - 1) != gender.charAt(index - 3)) && (sum2 == 2)) {
+							
+							num2Ch++;
+							break;
+					}
+
+					if ((gender.charAt(index - 1) != gender.charAt(index - 3)) && (sum2 == 3)) {
+							
+							num3Ch++;
+							break;
+					}
+
+					if ((gender.charAt(index - 1) != gender.charAt(index - 3)) && (sum2 >= 4)) {
+							
+							num4Ch++;
+							break;
+					}
+
+
+	
 				}
+			
+				index += 2;
+
+			}
 		}	
 	
 
 		average = (double) sum/T;
-
+		
+		System.out.println(sum);
 		System.out.println("Average: " + average + " children to get at least one of each gender.");
 		System.out.println("Number of families with 2 children: " + num2Ch);
 		System.out.println("Number of families with 3 children: " + num3Ch);
