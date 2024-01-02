@@ -16,22 +16,21 @@ public class OneOfEachStats {
         	Random generator = new Random(seed);  
 		
 		String gender = "";
-		int index = 1;
 		int num2Ch = 0;
 		int num3Ch = 0;
 		int num4Ch = 0;
 		int sum = 0;
 		int sum2;
+		int index = 1;
 		double average;
 		
 		for (int i = 0; i < T; i++){
 			
 			sum2 = 0;
+			index = 1;
+			gender = "";
 
 			while(true) {			
-			
-				sum++;
-				sum2++;
 				
 				
 				if (generator.nextDouble() < 0.5) {
@@ -45,6 +44,9 @@ public class OneOfEachStats {
 						}
 			
 				
+				sum++;
+				sum2++;
+					
 		
 				if (index >= 3){
 
@@ -78,11 +80,11 @@ public class OneOfEachStats {
 
 		average = (double) sum/T;
 		
-		System.out.println(sum);
 		System.out.println("Average: " + average + " children to get at least one of each gender.");
 		System.out.println("Number of families with 2 children: " + num2Ch);
 		System.out.println("Number of families with 3 children: " + num3Ch);
 		System.out.println("Number of families with 4 or more children: " + num4Ch);
+
 
 		int mostCommon = Math.max(Math.max(num2Ch, num3Ch), num4Ch);
 			
